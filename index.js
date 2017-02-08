@@ -10,12 +10,18 @@ if(Number.parseFloat(process.env.BABEL_TARGET_VERSION || process.version.substri
 	env.targets.node = 6.9
 }
 
-module.exports = {
-	presets: [ [ require('babel-preset-env'), env ] ],
-	plugins: [
-		require('babel-plugin-transform-class-properties'),
-		require('babel-plugin-transform-object-rest-spread'),
-		require('babel-plugin-import-auto-name'),
-		require('babel-plugin-transform-isnil').default
-	]
+function buildPreset(context, opts) {
+	opts = opts || { }
+
+	return {
+		presets: [ [ require('babel-preset-env'), Object.assign({ }, env, opts['preset-env'] || { }) ] ],
+		plugins: [
+			[ require('babel-plugin-transform-class-properties'), opts['transform-class-properties'] || { } ],
+			[ require('babel-plugin-transform-object-rest-spread'), opts['transform-object-rest-spread'] || { } ],
+			[ require('babel-plugin-import-auto-name'), opts['import-auto-name'] || { } ],
+			[ require('babel-plugin-transform-isnil').default, opts['transform-isnil'] || { } ]
+		]
+	}
 }
+
+module.exports = buildPreset
