@@ -20,5 +20,12 @@
     "babel-plugin-transform-isnil": "0.0.5",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
     "babel-preset-env": ">= 1.1.0 && < 1.5.0"
+  },
+  "devDependencies": {
+    "ava": "^0.20.0",
+    "babel-core": "^6.25.0"
+  },
+  "scripts": {
+    "test": "ava --verbose"
   }
 }
