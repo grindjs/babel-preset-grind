@@ -26,5 +26,8 @@ test('options', t => {
 })
 
 test('exec', t => {
-	t.is(transform('const a = true', grindPresent()).code, '"use strict";\n\nconst a = true;')
+	t.is(
+		transform('const a = { ...obj, a: true }', grindPresent()).code,
+		'"use strict";\n\nconst a = Object.assign({}, obj, { a: true });'
+	)
 })
