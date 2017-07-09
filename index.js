@@ -6,12 +6,12 @@ const env = {
 const major = Number.parseFloat(process.env.BABEL_TARGET_VERSION || process.version.substring(1))
 
 if(major >= 8) {
-	env.targets.node = 8.0
+	env.targets.node = '8.0.0'
 } else if(major >= 7) {
-	env.targets.node = 7.0
+	env.targets.node = '7.0.0'
 	env.exclude = [ 'transform-async-to-generator' ]
 } else {
-	env.targets.node = 6.9
+	env.targets.node = '6.9.0'
 }
 
 function buildPreset(context, opts) {
