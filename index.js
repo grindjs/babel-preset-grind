@@ -3,7 +3,11 @@ const env = {
 	useBuiltIns: true
 }
 
-if(Number.parseFloat(process.env.BABEL_TARGET_VERSION || process.version.substring(1)) >= 7) {
+const major = Number.parseFloat(process.env.BABEL_TARGET_VERSION || process.version.substring(1))
+
+if(major >= 8) {
+	env.targets.node = 8.0
+} else if(major >= 7) {
 	env.targets.node = 7.0
 	env.exclude = [ 'transform-async-to-generator' ]
 } else {
@@ -12,7 +16,6 @@ if(Number.parseFloat(process.env.BABEL_TARGET_VERSION || process.version.substri
 
 function buildPreset(context, opts) {
 	opts = opts || { }
-
 
 	opts['transform-object-rest-spread'] = opts['transform-object-rest-spread'] || { }
 
