@@ -1,3 +1,3 @@
 # babel-preset-grind
 
-These are global Babel settings for Grind projects.  It dynamically detects which version of Node you’re on and optimizes for it.
+Global Babel settings for Grind projects.  It’s optimized to the minimum version of Node that current releases of Grind support, and will optimize towards newer versions when possible.
