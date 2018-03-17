@@ -25,10 +25,10 @@ test('options', t => {
 	t.pass()
 })
 
-test('exec', t => {
+test('object spread', t => {
 	t.is(
 		transform('const a = { ...obj, a: true }', grindPresent()).code,
-		'"use strict";\n\nconst a = Object.assign({}, obj, { a: true });'
+		'"use strict";\n\nconst a = { ...obj, a: true };'
 	)
 })
 
