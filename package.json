@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-grind",
-  "version": "0.8.0-beta.2",
+  "version": "0.8.0-beta.3",
   "description": "Babel settings for Grind projects",
   "author": "Shaun Harrison (@shnhrrsn)",
   "license": "MIT",
