@@ -38,3 +38,17 @@ test('class properties', t => {
 		'"use strict";\n\nclass test {\n  constructor() {\n    this.b = 2;\n  }\n\n}\ntest.a = 1;'
 	)
 })
+
+test('isNil', t => {
+	t.is(
+		transform('something.isNil', grindPresent()).code,
+		'"use strict";\n\nvar _isNilWrapper = function (val) { return val === null || typeof val === \'undefined\'; };\n\n_isNilWrapper(something);'
+	)
+})
+
+test('import auto name', t => {
+	t.is(
+		transform('import \'App/Controllers/SomeController\'\nconst c = new SomeController', grindPresent()).code,
+		'\'use strict\';\n\nvar _SomeController = require(\'App/Controllers/SomeController\');\n\nconst c = new _SomeController.SomeController();'
+	)
+})
